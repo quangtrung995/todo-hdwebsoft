@@ -1,0 +1,108 @@
+:root {
+  --text-color: #545454;
+  --blue: #2c4bee;
+  --bluelight: #eaf1fe;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  h4 {
+    @apply text-base;
+  }
+  input {
+    @apply focus:outline-none;
+  }
+  body {
+    font-size: 0.875rem;
+    background-color: #f8f8fb;
+  }
+}
+@layer utilities {
+  @variants responsive {
+    .flex-center {
+      @apply justify-center items-center;
+    }
+
+    .cap-semi {
+      @apply capitalize font-semibold;
+    }
+
+    .error-message {
+      @apply text-red-500 text-xs capitalize;
+    }
+
+    .box-shadow {
+      box-shadow: 0px 0px 5px 5px rgba(94, 67, 67, 0.03);
+    }
+
+    .signin-input {
+      @apply border-[1px] rounded w-full p-2;
+    }
+
+    .bg-opacity {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+.custom-animation {
+  animation: custom 0.5s ease-out 1;
+  transition: 0.1s transform;
+}
+
+@keyframes custom {
+  from {
+    transform: translateX(30rem);
+  }
+  to {
+    transform: translateX(0rem);
+  }
+}
+
+.operation-info {
+  @apply text-mytext capitalize font-medium;
+}
+
+.todo-row {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 118, 20, 1) 0%,
+    rgba(255, 84, 17, 1) 100%
+  );
+  @apply py-2 px-3 rounded-lg flex flex-row justify-between items-center;
+}
+
+.todo-row:nth-child(4n + 1) {
+  background: linear-gradient(
+    90deg,
+    rgba(93, 12, 255, 1) 0%,
+    rgba(155, 0, 250, 1) 100%
+  );
+}
+
+.todo-row:nth-child(4n + 2) {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 12, 241, 1) 0%,
+    rgba(250, 0, 135, 1) 100%
+  );
+}
+
+.todo-row:nth-child(4n + 3) {
+  background: linear-gradient(
+    90deg,
+    rgba(20, 159, 255, 1) 0%,
+    rgba(17, 122, 255, 1) 100%
+  );
+}

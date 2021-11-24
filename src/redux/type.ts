@@ -1,0 +1,6 @@
+export const LOADING_REQUEST = 'LOADING_REQUEST';
+export const LOADING_SUCCESS = 'LOADING_SUCCESS';
+
+export const TODO_REQUEST = 'TODO_REQUEST'
+export const TODO_SUCCESS = 'TODO_SUCCESS'
+export const TODO_ERROR = 'TODO_ERROR'
