@@ -29,7 +29,7 @@ type ErrorType = {
 
 const My_Login = () => {
   ///auth
-  const { onLogin: onLoginPage } = useAuth() as valueType;
+  const { onLogin: onLoginPage } = useAuth();
 
   ///state
   const [revealPwd, setReveal] = React.useState(false);

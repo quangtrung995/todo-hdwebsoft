@@ -27,7 +27,7 @@ const repository = axios.create({
         return response
     }
 
-    export const deleteOne = (id: string): Promise<any> => {
+    export const deleteOne = (id: any): Promise<any> => {
         const response = repository.delete(`todo/${id}`).then(res => res.data)
         return response
     }

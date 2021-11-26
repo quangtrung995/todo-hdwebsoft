@@ -8,7 +8,7 @@ import { useAuth, valueType } from '../view/Wrapper/Auth.wrapper';
 
 export const My_PrivateRoute = ({ component: Component, ...rest }: any) => {
   //auth
-  const { isAuth } = useAuth() as valueType;
+  const { isAuth } = useAuth();
 
   ///render
   return (

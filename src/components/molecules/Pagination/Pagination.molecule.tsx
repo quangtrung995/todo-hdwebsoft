@@ -61,7 +61,6 @@ export const My_Pagination = ({
         <div className="flex h-8 font-medium ">
           {pagination(page.curr, page.total).map((item, index) => {
             if (typeof item == 'number') {
-              console.log(page.curr, index + 1);
               return (
                 <My_CustomButton
                   key={index}

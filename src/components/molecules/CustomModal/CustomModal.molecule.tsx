@@ -16,7 +16,7 @@ export const My_CustomModal = ({
   onClose,
   children,
 }: CustomModalType) => {
-  useDisableBodyScroll(open!);
+  useDisableBodyScroll(open);
   ///render
   return (
     <>

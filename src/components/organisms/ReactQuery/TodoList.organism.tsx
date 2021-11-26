@@ -60,7 +60,7 @@ export const My_TodoList = () => {
     onSetModal(null);
   };
   const onConfirmModal = () => {
-    mutate(openModal!);
+    mutate(openModal);
   };
   const notiSuccess = (message: string) => {
     showNotification({
@@ -97,7 +97,7 @@ export const My_TodoList = () => {
             ) : (
               <My_LoadingSpinner />
             )}
-            <My_Pagination total_page={10} current_page={3} />
+            {/* <My_Pagination total_page={10} current_page={3} /> */}
           </div>
         </div>
         {/* end of block 1 */}

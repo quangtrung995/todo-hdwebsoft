@@ -4,9 +4,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTodo, thunkAsyncAction } from '../../redux/action';
 
-//constant
-import { BACKEND_URL } from '../../constant';
-
 //alert
 import { AlertType, showNotification } from '../../utils/Alerts';
 
@@ -26,7 +23,7 @@ export const My_Redux = () => {
   const dispatch = useDispatch();
 
   ///state
-  const [openModal, onSetModal] = React.useState<string | boolean>(false);
+  const [openModal, onSetModal] = React.useState(false);
   const [mode, setMode] = React.useState('');
   const [edit, setEdit] = React.useState<ITodoData | null>(null);
 
@@ -40,7 +37,7 @@ export const My_Redux = () => {
   }, []);
 
   ///func to handle events
-  const onChangeMode = (target: string, _id: string, editValue?: any) => {
+  const onChangeMode = (target: string, _id: any, editValue?: any) => {
     setMode(target);
     onSetModal(_id);
     if (target === 'edit') {
@@ -50,7 +47,7 @@ export const My_Redux = () => {
   const onConfirm = () => {
     if (mode === 'edit') {
       api
-        .updateOne(edit!)
+        .updateOne(edit)
         .then((res) => {
           onGetTodoList();
           notiSuccess('Edited');
@@ -59,7 +56,7 @@ export const My_Redux = () => {
     }
     if (mode === 'delete') {
       api
-        .deleteOne(openModal as string)
+        .deleteOne(openModal)
         .then((res) => {
           onGetTodoList();
           notiSuccess('Deleted');
@@ -72,7 +69,7 @@ export const My_Redux = () => {
     onSetModal(false);
   };
   const onEditTodo = (prop: string, value: string) => {
-    setEdit((prev) => ({ ...prev, [prop]: value } as ITodoData));
+    setEdit((prev) => ({ ...prev, [prop]: value }));
   };
   const notiSuccess = (message: string) => {
     showNotification({
@@ -131,7 +128,7 @@ export const My_Redux = () => {
                     onEditTodo(e.target.name, e.target.value)
                   }
                   className="w-full p-2 border border-[#ff7614] my-5"
-                  value={edit!.name}
+                  value={edit.name}
                   placeholder="Name"
                 />
               </div>

@@ -1,7 +1,13 @@
 import React from 'react';
 
 //router-dom
-import { Switch, Redirect, Link, useRouteMatch } from 'react-router-dom';
+import {
+  Switch,
+  Redirect,
+  Link,
+  useRouteMatch,
+  useLocation,
+} from 'react-router-dom';
 
 //img
 import logo from '../../assets/programming.png';
@@ -13,7 +19,7 @@ import { My_CustomButton } from '../../components/atom';
 import { AlertType, showNotification } from '../../utils/Alerts';
 
 //auth
-import { useAuth, valueType } from '../Wrapper/Auth.wrapper';
+import { useAuth } from '../Wrapper/Auth.wrapper';
 
 //route
 import { routes } from '../../routes/routes';
@@ -22,7 +28,8 @@ import { My_PrivateRoute } from '../../routes';
 const My_home = () => {
   ///static
   const { path, url } = useRouteMatch();
-  const { onLogout } = useAuth() as valueType;
+  const { pathname } = useLocation();
+  const { onLogout } = useAuth();
 
   ///func to handle events
   const onSignout = () => {
@@ -49,7 +56,9 @@ const My_home = () => {
               return (
                 <li
                   key={name}
-                  className={`${path + pth === path ? 'text-[#ff7614]' : ''}`}
+                  className={`${
+                    path + pth === pathname ? 'text-[#ff7614]' : ''
+                  }`}
                 >
                   <Link to={`${url}${pth}`}>{name}</Link>
                 </li>
