@@ -1,6 +1,12 @@
 import React from 'react';
 
-const AuthContext = React.createContext(null);
+export type valueType = {
+  isAuth: boolean;
+  onLogin: (state: boolean) => void;
+  onLogout: () => void;
+};
+
+const AuthContext = React.createContext<valueType | null>(null);
 
 export const AuthProvider = (props: any) => {
   const [isAuthenticated, setAuth] = React.useState(false);
@@ -14,7 +20,7 @@ export const AuthProvider = (props: any) => {
     setAuth(false);
   };
 
-  const value = {
+  const value: valueType = {
     isAuth: isAuthenticated,
     onLogin: onSetAuthLocal,
     onLogout: onRemoveAuthLocal,

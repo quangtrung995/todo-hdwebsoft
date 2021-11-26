@@ -13,10 +13,13 @@ import axios from 'axios';
 import { BACKEND_URL } from '../../constant';
 
 //auth
-import { useAuth } from '../Wrapper/Auth.wrapper';
+import { useAuth, valueType } from '../Wrapper/Auth.wrapper';
 
 //alert
 import { AlertType, showNotification } from '../../utils/Alerts';
+
+//interface
+import { IUserAdmin } from '../../utils/todo';
 
 type ErrorType = {
   email?: string;
@@ -26,7 +29,7 @@ type ErrorType = {
 
 const My_Login = () => {
   ///auth
-  const { onLogin: onLoginPage } = useAuth();
+  const { onLogin: onLoginPage } = useAuth() as valueType;
 
   ///state
   const [revealPwd, setReveal] = React.useState(false);
@@ -64,7 +67,8 @@ const My_Login = () => {
 
     axios.get(`${BACKEND_URL}/users`).then((res: any) => {
       const validate = res.data.find(
-        (item) => item.email === form.email && item.password === form.password
+        (item: IUserAdmin) =>
+          item.email === form.email && item.password === form.password
       );
       if (validate) {
         showNotification({

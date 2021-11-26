@@ -17,24 +17,31 @@ import { AuthProvider } from './view/Wrapper/Auth.wrapper';
 import { ToastContainer } from 'react-toastify';
 
 //redux
-//redux
 import { Provider } from 'react-redux';
 import stores from './redux/store';
 
+//react query
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <AuthProvider>
-      <Provider store={stores}>
-        <BrowserRouter>
-          <Switch>
-            <My_PublicRoute exact path="/" component={My_Login} />
-            <My_PrivateRoute exact path="/home" component={My_home} />
-            <Redirect from="*" to="/" />
-          </Switch>
-          <ToastContainer />
-        </BrowserRouter>
-      </Provider>
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <Provider store={stores}>
+          <BrowserRouter>
+            <Switch>
+              <My_PublicRoute exact path="/" component={My_Login} />
+              <My_PrivateRoute path="/dashboard" component={My_home} />
+              <Redirect from="*" to="/" />
+            </Switch>
+            <ToastContainer />
+          </BrowserRouter>
+        </Provider>
+      </AuthProvider>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
 

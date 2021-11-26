@@ -4,11 +4,11 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
 //auth
-import { useAuth } from '../view/Wrapper/Auth.wrapper';
+import { useAuth, valueType } from '../view/Wrapper/Auth.wrapper';
 
 export const My_PublicRoute = ({ component: Component, ...rest }: any) => {
   //auth
-  const { isAuth } = useAuth();
+  const { isAuth } = useAuth() as valueType;
 
   ///render
   return (
@@ -21,7 +21,7 @@ export const My_PublicRoute = ({ component: Component, ...rest }: any) => {
         } else {
           return (
             <Redirect
-              to={{ pathname: '/home', state: { from: props.location } }}
+              to={{ pathname: '/dashboard', state: { from: props.location } }}
             />
           );
         }

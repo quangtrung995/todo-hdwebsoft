@@ -3,8 +3,20 @@ import React from 'react';
 //comps
 import { My_CustomButton } from '../../atom';
 
-export const My_CustomModal = ({ open, onConfirm, onClose, children }) => {
-  useDisableBodyScroll(open);
+type CustomModalType = {
+  open: boolean | string;
+  onConfirm: () => void;
+  onClose: () => void;
+  children: JSX.Element;
+};
+
+export const My_CustomModal = ({
+  open,
+  onConfirm,
+  onClose,
+  children,
+}: CustomModalType) => {
+  useDisableBodyScroll(open!);
   ///render
   return (
     <>
@@ -36,7 +48,7 @@ export const My_CustomModal = ({ open, onConfirm, onClose, children }) => {
     </>
   );
 };
-const useDisableBodyScroll = (open) => {
+const useDisableBodyScroll = (open: boolean | string) => {
   React.useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden';

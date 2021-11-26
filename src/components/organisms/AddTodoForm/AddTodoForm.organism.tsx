@@ -19,7 +19,7 @@ import { useDispatch } from 'react-redux';
 import { getTodo } from '../../../redux/action';
 import { AlertType, showNotification } from '../../../utils/Alerts';
 
-export const My_AddTodoForm = ({}) => {
+export const My_AddTodoForm = () => {
   ///static
   const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ export const My_AddTodoForm = ({}) => {
   }, []);
 
   ///func to handle events
-  const onChangeValue = (prop, value) => {
+  const onChangeValue = (prop: string, value: string) => {
     setContent((prev) => ({
       ...prev,
       [prop]: value,
